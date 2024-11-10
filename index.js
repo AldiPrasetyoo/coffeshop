@@ -43,7 +43,7 @@ function connect() {
 
 connect();
 
-app.post("/menu/tbhDt", (req, res) => {
+app.post("/menu", (req, res) => {
   const { nama, kategori, deskripsi, makanan_pelengkap } = req.body;
   const query =
     "INSERT INTO listmenu (nama, kategori, deskripsi, makanan_pelengkap) VALUES (?, ?, ?, ?)";
