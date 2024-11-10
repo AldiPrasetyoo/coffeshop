@@ -43,7 +43,7 @@ function connect() {
 
 connect();
 
-app.post("/api/notes", (req, res) => {
+app.post("/menu/tbhDt", (req, res) => {
   const { nama, kategori, deskripsi, makanan_pelengkap } = req.body;
   const query =
     "INSERT INTO listmenu (nama, kategori, deskripsi, makanan_pelengkap) VALUES (?, ?, ?, ?)";
@@ -59,14 +59,14 @@ app.post("/api/notes", (req, res) => {
   });
 });
 
-app.get("/api/notes", (req, res) => {
+app.get("/menu", (req, res) => {
   db.query("SELECT * FROM listmenu", (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
     res.status(200).json(results);
   });
 });
 
-app.get("/api/notes/:id", (req, res) => {
+app.get("/menu/:id", (req, res) => {
   const { id } = req.params;
   db.query("SELECT * FROM listmenu WHERE id = ?", [id], (err, results) => {
     if (err) return res.status(500).json({ error: err.message });
@@ -75,7 +75,7 @@ app.get("/api/notes/:id", (req, res) => {
   });
 });
 
-app.put("/api/notes/:id", (req, res) => {
+app.put("/menu/:id", (req, res) => {
   const { id } = req.params;
   const { nama, kategori, deskripsi, makanan_pelengkap } = req.body;
   const query =
@@ -86,7 +86,7 @@ app.put("/api/notes/:id", (req, res) => {
   });
 });
 
-app.delete("/api/notes/:id", (req, res) => {
+app.delete("/menu/:id", (req, res) => {
   const { id } = req.params;
   db.query("DELETE FROM listmenu WHERE id = ?", [id], (err, result) => {
     if (err) return res.status(500).json({ error: err.message });
